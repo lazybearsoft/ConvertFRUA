@@ -1,0 +1,62 @@
+﻿  Capitalize.cpp
+  Class.cpp
+  ConvertFRUA.cpp
+  Event_AddNPC.cpp
+  Event_Camp.cpp
+  Event_Chain.cpp
+  Event_Combat.cpp
+  Event_CombatTreasure.cpp
+  Event_Encounter.cpp
+  Event_GainExperience.cpp
+  Event_GiveDamage.cpp
+  Event_GiveTreasure.cpp
+  Event_GuidedTour.cpp
+  Event_HealParty.cpp
+  Event_Journal.cpp
+  Event_Monster.cpp
+  Event_NPCSays.cpp
+  Event_Null.cpp
+  Event_PassTime.cpp
+  Event_PAssword.cpp
+  Compiling...
+  Event_Quest.cpp
+  Event_QuestionButton.cpp
+  Event_QuestionList.cpp
+  Event_QuestionYesNo.cpp
+  Event_Random.cpp
+  Event_RemoveNPC.cpp
+  Event_Rest.cpp
+  Event_Shop.cpp
+  Event_SmallTown.cpp
+  Event_Sound.cpp
+  Event_SpecialItems.cpp
+  Event_TakePArtyItems.cpp
+  Event_Tavern.cpp
+  Event_TavernTales.cpp
+  Event_Teleporter.cpp
+  Event_Temple.cpp
+  Event_TextStatement.cpp
+  Event_Tour.cpp
+  Event_TrainingHall.cpp
+  Event_Utilities.cpp
+  Compiling...
+  Event_Vault.cpp
+  Event_WhoPays.cpp
+  Event_WhoTries.cpp
+  Globals.cpp
+  Items.cpp
+  J.cpp
+  Levels.cpp
+  MapGrid.cpp
+  Miscellaneous.cpp
+  Monsters.cpp
+  NPC.cpp
+  Spells.cpp
+  StdAfx.cpp
+  StepEvents.cpp
+  TransferModule.cpp
+  Generating code
+  All 1592 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  ConvertFRUA_VS2012.vcxproj -> C:\dev\FRUA_CONVERT\ConvertFRUA\Release\ConvertFRUA_VS2012.exe
+  ConvertFRUA_VS2012.vcxproj -> C:\dev\FRUA_CONVERT\ConvertFRUA\Release\ConvertFRUA_VS2012.pdb (Full PDB)

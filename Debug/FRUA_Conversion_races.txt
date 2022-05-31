@@ -1,0 +1,179 @@
+// Race database file
+// The line above **must** be the first line of the races file!!! "// Race database file"
+//
+// Adjustments are of the form:
+//    +/-n*(characteristic-k)/d
+// For example to adjust, say, height.  Any of these are legal and equivalent.
+//   Height Adjust  =  +1*(Level-0)/1  ; Means (+1*(level-0))/1
+//   Height Adjust  =   1*(Level-0)/1
+//   Height Adjust  =   1*level/1
+//   Height Adjust  =   level/1
+//   Height Adjust  =   1*level
+//   Height Adjust  =   level
+// Division throws remainder away.  +1/2 = 0   -1/2 = 0
+
+\(BEGIN)
+name = template
+Key = -1
+Height = 60
+Weight = 90
+Age = 1d6+14
+MaxAge = 100
+BaseMovement = 12
+\(END)
+
+\(BEGIN) Human
+name = HUMAN
+Key = 1
+Height = 2d10+59+1*Male
+Weight = 6d10+100+40*Male
+Age = 1d4+18
+MaxAge = 1d20+75
+BaseMovement = 12
+AbilityRequirement = Strength 3/18(100)
+AbilityRequirement = Intelligence 3/18
+AbilityRequirement = Wisdom 3/18
+AbilityRequirement = Dexterity 3/18
+AbilityRequirement = Constitution 3/18
+AbilityRequirement = Charisma 3/18
+\(END)
+
+\(BEGIN)
+name = ELF
+Key = 2
+Height = 1d10+50+5*Male
+Weight = 3d10+70+20*Male
+Age = 5d6+100
+MaxAge = 4d100+350
+BaseMovement = 12
+AbilityRequirement = Strength 3/18(75)
+AbilityRequirement = Intelligence 8/18
+AbilityRequirement = Wisdom 3/18
+AbilityRequirement = Dexterity 7/19
+AbilityRequirement = Constitution 6/17
+AbilityRequirement = Charisma 8/18
+AllowedMultiClass = FIGHTER/MAGIC USER
+AllowedMultiClass = FIGHTER/THIEF
+AllowedMultiClass = FIGHTER/MAGIC USER/THIEF
+AllowedMultiClass = MAGIC USER/THIEF
+Special Ability = race_Infravision
+Special Ability = race_Elf,elf
+\(END)
+
+\(BEGIN)
+name = DWARF
+Key = 3
+Height = 1d10+41+2*Male
+Weight = 4d10+105+25*Male
+Age = 5d6+40
+MaxAge = 2d100+250
+BaseMovement = 6
+AbilityRequirement = Strength 8/18(99)
+AbilityRequirement = Intelligence 3/18
+AbilityRequirement = Wisdom 3/18
+AbilityRequirement = Dexterity 3/17
+AbilityRequirement = Constitution 11/19
+AbilityRequirement = Charisma 3/16
+//AllowedMultiClass = CLERIC/FIGHTER
+AllowedMultiClass = FIGHTER/THIEF
+Special Ability = race_Infravision
+Special Ability = race_ShortSaveBonus,12
+\(END)
+
+\(BEGIN)
+name = GNOME
+Key = 4
+Height = 1d6+36+2*Male
+Weight = 5d4+68+4*Male
+Age = 3d12+60
+MaxAge = 3d100+200
+BaseMovement = 6
+AbilityRequirement = Strength 6/18(50)
+AbilityRequirement = Intelligence 7/18
+AbilityRequirement = Wisdom 3/18
+AbilityRequirement = Dexterity 3/18
+AbilityRequirement = Constitution 8/18
+AbilityRequirement = Charisma 3/18
+AllowedMultiClass = FIGHTER/MAGIC USER
+AllowedMultiClass = FIGHTER/THIEF
+AllowedMultiClass = MAGIC USER/THIEF
+Special Ability = race_Infravision
+Special Ability = race_ShortSaveBonus,8
+\(END)
+
+\(BEGIN)
+name = HALF-ELF
+Key = 5
+Height = 2d6+58+2*Male
+Weight = 3d12+85+25*Male
+Age = 1d6+15
+MaxAge = 3d20+125
+BaseMovement = 12
+AbilityRequirement = Strength 3/18(90)
+AbilityRequirement = Intelligence 4/18
+AbilityRequirement = Wisdom 3/18
+AbilityRequirement = Dexterity 6/18
+AbilityRequirement = Constitution 6/18
+AbilityRequirement = Charisma 3/18
+AllowedMultiClass = CLERIC/FIGHTER
+AllowedMultiClass = CLERIC/FIGHTER/MAGIC USER
+AllowedMultiClass = CLERIC/RANGER
+AllowedMultiClass = CLERIC/MAGIC USER
+AllowedMultiClass = FIGHTER/MAGIC USER
+AllowedMultiClass = FIGHTER/THIEF
+AllowedMultiClass = FIGHTER/MAGIC USER/THIEF
+AllowedMultiClass = MAGIC USER/THIEF
+//AllowedMultiClass  = FIGHTER/DRUID
+//AllowedMultiClass  = DRUID/MAGIC USER
+//AllowedMultiClass  = FIGHTER/MAGIC USER/DRUID
+Special Ability = race_Infravision
+Special Ability = race_HalfElf,half-elf
+\(END)
+
+\(BEGIN)
+name = HALFLING
+Key = 6
+Weight = 5d4+48+4*Male
+Height = 2d8+30+2*Male
+Age = 3d4+20
+MaxAge = 1d100+100
+BaseMovement = 6
+AbilityRequirement = Strength 6/17
+AbilityRequirement = Intelligence 6/18
+AbilityRequirement = Wisdom 3/17
+AbilityRequirement = Dexterity 8/18
+AbilityRequirement = Constitution 10/19
+AbilityRequirement = Charisma 3/18
+AllowedMultiClass = FIGHTER/THIEF
+Special Ability = race_Infravision
+Special Ability = race_ShortSaveBonus,10
+\(END)
+
+\(BEGIN)
+name = HALF-ORC
+Key = 7
+Height = 2d10+62+2*Male
+Weight = 6d10+150+50*Male
+Age = 2d3+16
+MaxAge = 1d20+60
+BaseMovement = 12
+AbilityRequirement = Strength 6/19
+AbilityRequirement = Intelligence 3/17
+AbilityRequirement = Wisdom 3/14
+AbilityRequirement = Dexterity 3/17
+AbilityRequirement = Constitution 13/19
+AbilityRequirement = Charisma 3/12
+AllowedMultiClass = FIGHTER/THIEF
+AllowedMultiClass = CLERIC/FIGHTER
+AllowedMultiClass = CLERIC/THIEF
+Special Ability = race_Infravision
+\(END)
+
+\(BEGIN)
+name = $$Help
+Special Ability = Date,"August 17, 2012"
+Special Ability = Version,".9935"
+Special Ability = Updates984,"updated SA for Elf"
+Special Ability = Updates9935."updated race_ShortSaveBonus for dwarf, gnome and halfling"
+\(END)
+

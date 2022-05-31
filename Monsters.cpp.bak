@@ -1,0 +1,320 @@
+#include "stdafx.h"
+#include "Translate.h"
+//
+extern FILE *f;
+extern CString FRUAExportDate, FRUAExportTime;
+extern CString ConvertFRUAVersion;
+void Line(const char *name, const char *value);
+
+#define Str(a) monster.Fetch_String(a)
+#define Int(a) monster.Fetch_Int(a)
+
+/*
+CONFIGID monsterIDs[] =
+{
+CONFIGID( "" ,CONFIG_DATA_object ,monsterObject),
+DEFID( "name"                    ,string ,Name),
+DEFID( "Key"                     ,long   ,Key),
+DEFID( "icon file"               ,spritedata   ,IconFile),
+DEFID( "miss sound"              ,file   ,MissSound),
+DEFID( "hit sound"               ,file   ,HitSound),
+DEFID( "move sound"              ,file   ,MoveSound),
+DEFID( "death sound"             ,file   ,DeathSound),
+DEFID( "intelligence"            ,long   ,Intelligence),
+DEFID( "armor class"             ,long   ,ArmorClass),
+DEFID( "movement rate"           ,long   ,MovementRate),
+DEFID( "hit dice"                ,float  ,HitDice),
+DEFID( "treat HD as hit points"  ,enum   ,UseHitDice),
+DEFID( "hit dice bonus"          ,long   ,HitDiceBonus),
+DEFID( "THAC0"                   ,long   ,THAC0),
+DEFIDz( "Number of Attacks"      ,long   ,NbrAttacks, true), // read-only
+DEFIDz( "Attack dice"            ,dice   ,AttackDice, true), // read-only
+DEFID( "magic resistance"        ,long   ,MagicResistance),
+DEFID( "size"                    ,enum   ,Size),
+    CONFIGID( "small"     ,Small),
+    CONFIGID( "medium"    ,Medium),
+    CONFIGID( "large"     ,Large),
+DEFID( "morale"                  ,long   ,Morale),
+DEFID( "experience point value"  ,long   ,XPValue),
+DEFID( "Special Ability"         ,string ,SpecialAbility),
+//DEFID( "classes"                 ,flags  ,Classes),
+DEFID( "Class"                   ,string ,Class),
+DEFID( "Race"                    ,string ,Race),
+DEFID( "form"                    ,flags  ,Form),
+DEFID( "penalty"                 ,flags  ,Penalty),
+DEFID( "immunity"                ,flags  ,Immunity),
+DEFID( "Misc Options"            ,flags  ,MiscOptions),
+DEFID( "item"                    ,string ,Item),
+DEFID( "attack"                  ,string ,Attack),
+DEFID( "Undead"                  ,string ,UndeadType),
+*/
+
+
+void ConvertOneMonster(JReader& monster)
+{
+  monster.StartList(DBGID_oneMonster);
+  int i;
+  Line("class",Str("class"));
+  Line("name", Str("name"));
+  Line("Key"                     ,Str("id")); //"???long"); //   ,Key),
+  for (i=1; i<10; i++)
+  {
+    CString tag, value;
+    int        numDice,        sides,        bonus,        nbrAttacks;
+    int unarmedNumDice, unarmedSides, unarmedBonus, unarmedNbrAttacks;
+    tag.Format("attack_%d_damage_bonus", i);
+    monster.Optional(); if (!monster.NameAndValue(tag, bonus)) continue;
+    tag.Format("attack_%d_damage_dice_sides", i);
+    monster.Optional(); if (!monster.NameAndValue(tag, sides)) continue;
+    tag.Format("attack_%d_nbr_attacks_per_2_rounds", i);
+    monster.Optional(); if (!monster.NameAndValue(tag, nbrAttacks)) continue;
+    tag.Format("attack_%d_num_damage_dice", i);
+    monster.Optional(); if (!monster.NameAndValue(tag, numDice)) continue;
+    tag.Format("attack_%d_unarmed_damage_bonus", i);
+    monster.Optional(); if (!monster.NameAndValue(tag, unarmedBonus)) continue;
+    tag.Format("attack_%d_unarmed_damage_dice_sides", i);
+    monster.Optional(); if (!monster.NameAndValue(tag, unarmedSides)) continue;
+    tag.Format("attack_%d_unarmed_nbr_attacks_per_2_rounds", i);
+    monster.Optional(); if (!monster.NameAndValue(tag, unarmedNbrAttacks)) continue;
+    tag.Format("attack_%d_unarmed_num_damage_dice", i);
+    monster.Optional(); if (!monster.NameAndValue(tag, unarmedNumDice)) continue;
+    value.Format("%d,%d,%d,attacks", sides, numDice, bonus);
+    if ((numDice == 0) && ( bonus == 0)) continue;
+    Line("attack", value);
+  };
+  //Line("icon file"               ,"???spritedata"
+  Line("icon file"               ,Str("icon_index")); //   ,IconFile),
+
+  Line("miss sound"              ,"");
+  Line("hit sound"               ,"");
+  Line("move sound"              ,"");
+  Line("death sound"             ,"");
+
+  //Int("ability_intelligence_adjusted");
+  //Int("ability_intelligence_base");
+  Line("intelligence"            ,Str("ability_intelligence_base"));
+
+  //Int("armor_class_adjusted");
+  //Int("armor_class_base");
+  Line("armor class"             ,Str("armor_class_base"));
+
+  //Int("movement_adjusted");
+  //Int("movement_base");
+  Line("movement rate"           ,Str("movement_base"));
+
+  Line("hit dice"                ,"0");
+  Line("hit dice bonus"          ,"0"); //   ,HitDiceBonus),
+  Line("treat HD as hit points"  ,"no");
+
+  //Int("thaco_adjusted");
+  //Int("thaco_base");
+  Line("THAC0"                   ,Str("thaco_base"));
+
+  // The following have been replaced with "attack" entries
+  //Line("Number of Attacks"       ,"???long"); //   ,NbrAttacks, true), // read-only
+  //Line("Attack dice"             ,"???dice"); //   ,AttackDice, true), // read-only
+
+  //Int("magic_resist_base_percent");
+  //Int("magic_resist_bonus");
+  Line("magic resistance"        ,Str("magic_resist_base_percent"));
+
+  //STR("size_icon");
+  //Int("size_large_even_if_icon_1x1");
+  {
+    CString temp, v;
+    /*
+   case 0: currMonster["size_icon"] = "small"; break; // zero not legit, but the default zombie uses it
+   case 1: currMonster["size_icon"] = "small"; break;
+   case 2: currMonster["size_icon"] = "tall"; break;
+   case 3: currMonster["size_icon"] = "wide"; break;
+   case 4: currMonster["size_icon"] = "big"; break;
+   case 5: currMonster["size_icone"] = "huge"; break; 
+  */
+    temp = Str("size_icon");
+    if (temp == "small") v = "small";
+    if (temp == "tall") v =  "medium";
+    if (temp == "wide") v = "medium";
+    if (temp == "big") v = "large";
+    if (temp == "huge") v = "large";
+    Line("size"                    ,v);
+  };
+
+  //Int("morale_base");
+  Line("morale"                  ,Str("morale_base"));
+
+  //Int("experience_current");
+  //Int("experience_granted_for_killing");
+  //Int("experience_predrain");
+  Line("experience point value"  ,Str("experience_current")); //   ,XPValue),
+
+  //Line("Special Ability"         ,"???string"); // ,SpecialAbility),
+
+  //Line("form"                    ,"???flags"); //  ,Form),
+
+  //Line("penalty"                 ,"???flags"); //  ,Penalty),
+
+  //Line("immunity"                ,"???flags"); //  ,Immunity),
+
+  //Line("Misc Options"            ,"???flags"); //  ,MiscOptions),
+
+  //Str("equip_item_01");
+  //Int("equip_item_01_count");
+  //Str("equip_item_02");
+  //Int("equip_item_02_count");
+  for(i=0; i<9; i++)
+  {
+    CString tag, itemName, value;
+    int itemCount;
+    tag.Format("equip_item_%02d", i);
+    monster.Optional(); if (!monster.NameAndValue(tag, itemName)) continue;
+    tag.Format("equip_item_%02d_count", i);
+    monster.Optional(); if (!monster.NameAndValue(tag, itemCount)) continue;
+    value.Format("%s,%d", itemName, itemCount);
+    Line("item"                    ,value);
+  };
+
+  //STR("undead_type");
+  Line("Undead"                  ,Str("undead_type"));
+
+
+//Int("ability_charisma_adjusted");
+//Int("ability_charisma_base");
+//Int("ability_constitution_adjusted");
+//Int("ability_constitution_base");
+//Int("ability_dextericy_adjusted");
+//Int("ability_dexterity_base");
+//Int("ability_strength_adjusted");
+//Int("ability_strength_base");
+//Int("ability_strength_extraordinary_adjusted");
+//Int("ability_strength_extraordinary_percentage");
+//Int("ability_wisdom_adjusted");
+//Int("ability_wisdom_base");
+//Int("age_years");
+//Str("alignment");
+//Str("combat_mode");
+//Str("combat_status");
+//Int("cure_disease_allowed");
+//Int("cure_disease_count");
+//Str("current_status");
+//Int("encumbrance_in_coins");
+//Int("equip_num_hands_full");
+//Str("gender");
+//Int("hitpoints_adjusted");
+//Int("hitpoints_base");
+//Int("hitpoints_maximum");
+//Int("hitpoints_predrain");
+//Int("item_bundles_carried");
+//Int("item_mask_can_equip_cleric");
+//Int("item_mask_can_equip_fighter");
+//Int("item_mask_can_equip_knight");
+//Int("item_mask_can_equip_magic_user");
+//Int("item_mask_can_equip_paladin_ranger");
+//Int("item_mask_can_equip_thief");
+//Int("level_current");
+//Int("level_current_cleric");
+//Int("level_current_fighter");
+//Int("level_current_knight");
+//Int("level_current_mage");
+//Int("level_current_paladin");
+//Int("level_current_ranger");
+//Int("level_current_thief");
+//Int("level_fighter_sweep");
+//Int("level_former_class");
+//Int("level_preclasschange_cleric");
+//Int("level_preclasschange_fighter");
+//Int("level_preclasschange_knight");
+//Int("level_preclasschange_mage");
+//Int("level_preclasschange_paladin");
+//Int("level_preclasschange_ranger");
+//Int("level_preclasschange_thief");
+//Int("level_predrain_cleric");
+//Int("level_predrain_fighter");
+//Int("level_predrain_knight");
+//Int("level_predrain_mage");
+//Int("level_predrain_paladin");
+//Int("level_predrain_ranger");
+//Int("level_predrain_thief");
+//Int("level_ready_to_train");
+//Int("party_index");
+//STR("race");
+//Int("save_vs_breathweapon");
+//Int("save_vs_paralysis_poison_deathmagic");
+//Int("save_vs_petrification_polymorph");
+//Int("save_vs_rod_staff_wand");
+//Int("save_vs_spell");
+//Int("special_flag_affected_by_dispel_evil");
+//Int("special_flag_can_be_held_or_charmed");
+//Int("special_flag_dwarf_has_hit_bonus");
+//Int("special_flag_extra_dmg_from_ranger");
+//Int("special_flag_gnome_has_hit_bonus");
+//Int("special_flag_immune_to_confusion");
+//Int("special_flag_immune_to_death_magic");
+//Int("special_flag_immune_to_decapitation_from_vorpal_sword");
+//Int("special_flag_immune_to_poison");
+//Int("special_flag_is_a_animal");
+//Int("special_flag_is_a_mammal");
+//Int("special_flag_is_a_snake");
+//Int("special_flag_is_a_true_giant");
+//Int("special_flag_penalty_to_hit_dwarf");
+//Int("special_flag_penalty_to_hit_gnome");
+//Int("spells_num_cleric_level_1");
+//Int("spells_num_cleric_level_2");
+//Int("spells_num_cleric_level_3");
+//Int("spells_num_cleric_level_4");
+//Int("spells_num_cleric_level_5");
+//Int("spells_num_cleric_level_6");
+//Int("spells_num_cleric_level_7");
+//Int("spells_num_druid_level_1");
+//Int("spells_num_druid_level_2");
+//Int("spells_num_druid_level_3");
+//Int("spells_num_magicuser_level_1");
+//Int("spells_num_magicuser_level_2");
+//Int("spells_num_magicuser_level_3");
+//Int("spells_num_magicuser_level_4");
+//Int("spells_num_magicuser_level_5");
+//Int("spells_num_magicuser_level_6");
+//Int("spells_num_magicuser_level_7");
+//Int("spells_num_magicuser_level_8");
+//Int("spells_num_magicuser_level_9");
+//Int("thieving_skill_climb_walls");
+//Int("thieving_skill_find_remove_trap");
+//Int("thieving_skill_hear_noise");
+//Int("thieving_skill_hide_in_shadows");
+//Int("thieving_skill_move_silent");
+//Int("thieving_skill_openlock");
+//Int("thieving_skill_pickpocket");
+//Int("thieving_skill_read_languages");
+//Int("wealth_num_gems");
+//Int("wealth_num_jewelry");
+//Int("wealth_num_platinum");
+
+
+
+
+
+monster.EndList(DBGID_oneMonster);
+};
+
+
+void ConvertMonsters(JReader& jr)
+{
+  if ( f != NULL)
+  {
+    die("Internal error in Monsters.cpp.  f not null");
+  };
+  f = fopen(jsonPath + "monsters.txt", "w");
+  fprintf(f,"// Monster database file\n");
+  fprintf(f,"// The line above **must** be the first line of the monsters file!!!\n\n");
+
+  fprintf(f,"// FRUA Export Version %s:%s\n", FRUAExportDate, FRUAExportTime);
+  fprintf(f,"// ConverFRUA version %s\n", ConvertFRUAVersion);
+  while (jr.Optional(), jr.NextEntry())
+  {
+    JReader monster(jr);
+    fprintf(f,"\n\\(BEGIN)\n");
+    ConvertOneMonster(monster);
+    fprintf(f,"\\(END)\n");
+  };
+  fclose(f);
+  f = NULL;
+}

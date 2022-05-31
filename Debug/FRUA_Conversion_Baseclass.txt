@@ -1,0 +1,438 @@
+// BaseClass database file
+// The above line must appear exactly as shown.
+//   "// BaseClass database file"
+//
+// The names should not conflict with any of the names
+// in the class database, the items database, the spells
+// database, races database, or abilities database.
+// What I did was to start all base classes with a lower
+// case letter and classes with an upper case letter.
+//
+// Minimum experience points for each character level
+// Starting with level 1, for all levels up to level 30
+// Eg:   ExpLevel = 65420
+//
+// Allowed Alignment is one of:
+//
+//    any
+//    Lawful Good
+//    Neutral Good
+//    Chaotic Good
+//    Lawful Neutral
+//    True Neutral
+//    Chaotic Neutral
+//    Lawful Evil
+//    Neutral Evil
+//    Chaotic Evil
+//
+// example, which only allows two alignments for a class
+//   Allowed Alignment = Lawful Good
+//   Allowed Alignment = Lawful Evil
+//
+//
+
+\(BEGIN)
+name = TEMPLATE
+Key = -1
+Prime Requisite = Strength
+AbilityRequirement = Strength 0/999(100)
+Allowed Race = HUMAN
+Allowed Alignment = any
+ExpLevel = 100
+ExpLevel = 200
+ExpLevel = 400
+\(END)
+
+\(BEGIN)
+name = FIGHTER
+Key = 1
+Prime Requisite = Strength
+AbilityRequirement = Strength 9/19
+AbilityRequirement = Dexterity 3/19
+AbilityRequirement = Constitution 3/19
+AbilityRequirement = Intelligence 3/19
+Allowed Race = HUMAN
+Allowed Race = HALFLING
+Allowed Race = HALF-ELF
+Allowed Race = GNOME
+Allowed Race = ELF
+Allowed Race = DWARF
+Allowed Race = HALF-ORC
+Allowed Alignment = any
+ExpLevel = 0
+ExpLevel = 2001
+ExpLevel = 4001
+ExpLevel = 8001
+ExpLevel = 18001
+ExpLevel = 35001
+ExpLevel = 70001
+ExpLevel = 125001
+ExpLevel = 250001
+ExpLevel = 500001
+ExpLevel = 750001
+ExpLevel = 1000001
+ExpLevel = 1250001
+ExpLevel = 1500001
+ExpLevel = 1750001
+ExpLevel = 2000001
+ExpLevel = 2250001
+ExpLevel = 2500001
+ExpLevel = 2750001
+ExpLevel = 3000001
+ExpLevel = 3250001
+ExpLevel = 3500001
+ExpLevel = 3750001
+ExpLevel = 4000001
+ExpLevel = 4250001
+ExpLevel = 4500001
+ExpLevel = 4750001
+ExpLevel = 5000001
+ExpLevel = 5250001
+ExpLevel = 5500001
+ExpLevel = 5750001
+ExpLevel = 6000001
+ExpLevel = 6250001
+ExpLevel = 6500001
+ExpLevel = 6750001
+ExpLevel = 7000001
+ExpLevel = 7250001
+ExpLevel = 7500001
+ExpLevel = 7750001
+ExpLevel = 8000001
+\(END)
+
+\(BEGIN)
+name = CLERIC
+Key = 2
+Prime Requisite = Wisdom
+AbilityRequirement = Wisdom 9/18
+AbilityRequirement = Dexterity 3/19
+AbilityRequirement = Constitution 3/19
+AbilityRequirement = Intelligence 3/19
+Allowed Race = HUMAN
+Allowed Race = HALF-ELF
+Allowed Race = HALF-ORC
+Allowed Alignment = any
+ExpLevel = 0
+ExpLevel = 1501
+ExpLevel = 3001
+ExpLevel = 6001
+ExpLevel = 13001
+ExpLevel = 27501
+ExpLevel = 55001
+ExpLevel = 110001
+ExpLevel = 225001
+ExpLevel = 450001
+ExpLevel = 675001
+ExpLevel = 900001
+ExpLevel = 1125001
+ExpLevel = 1350001
+ExpLevel = 1575001
+ExpLevel = 1800001
+ExpLevel = 2025001
+ExpLevel = 2250001
+ExpLevel = 2475001
+ExpLevel = 2700001
+ExpLevel = 2925001
+ExpLevel = 3150001
+ExpLevel = 3375001
+ExpLevel = 3600001
+ExpLevel = 3825001
+ExpLevel = 4050001
+ExpLevel = 4275001
+ExpLevel = 4500001
+ExpLevel = 4725001
+ExpLevel = 4950001
+ExpLevel = 5175001
+ExpLevel = 5400001
+ExpLevel = 5625001
+ExpLevel = 5850001
+ExpLevel = 6075001
+ExpLevel = 6300001
+ExpLevel = 6525001
+ExpLevel = 6750001
+ExpLevel = 6975001
+ExpLevel = 7200001
+\(END)
+
+\(BEGIN)
+name = RANGER
+Key = 3
+Prime Requisite = Strength
+AbilityRequirement = Strength 13/18
+AbilityRequirement = Dexterity 13/19
+AbilityRequirement = Constitution 14/18
+AbilityRequirement = Wisdom 14/18
+Allowed Race = HUMAN
+Allowed Race = HALF-ELF
+Allowed Alignment = Lawful Good
+Allowed Alignment = Neutral Good
+Allowed Alignment = Chaotic Good
+ExpLevel = 0
+ExpLevel = 2251
+ExpLevel = 4501
+ExpLevel = 10001
+ExpLevel = 20001
+ExpLevel = 40001
+ExpLevel = 90001
+ExpLevel = 150001
+ExpLevel = 225001
+ExpLevel = 325001
+ExpLevel = 650001
+ExpLevel = 975001
+ExpLevel = 1300001
+ExpLevel = 1625001
+ExpLevel = 1950001
+ExpLevel = 2275001
+ExpLevel = 2600001
+ExpLevel = 2925001
+ExpLevel = 3250001
+ExpLevel = 3575001
+ExpLevel = 3900001
+ExpLevel = 4225001
+ExpLevel = 4550001
+ExpLevel = 4875001
+ExpLevel = 5200001
+ExpLevel = 5525001
+ExpLevel = 5850001
+ExpLevel = 6175001
+ExpLevel = 6500001
+ExpLevel = 6825001
+ExpLevel = 7150001
+ExpLevel = 7475001
+ExpLevel = 7800001
+ExpLevel = 8125001
+ExpLevel = 8450001
+ExpLevel = 8775001
+ExpLevel = 9100001
+ExpLevel = 9425001
+ExpLevel = 9750001
+ExpLevel = 10075001
+\(END)
+
+\(BEGIN)
+name = PALADIN
+Key = 4
+Prime Requisite = Strength
+AbilityRequirement = Strength 12/18
+AbilityRequirement = Constitution 9/18
+AbilityRequirement = Wisdom 13/18
+AbilityRequirement = Charisma 17/18
+Allowed Race = HUMAN
+Allowed Alignment = Lawful Good
+ExpLevel = 0
+ExpLevel = 2751
+ExpLevel = 5501
+ExpLevel = 12001
+ExpLevel = 24001
+ExpLevel = 45001
+ExpLevel = 95001
+ExpLevel = 175001
+ExpLevel = 350001
+ExpLevel = 700001
+ExpLevel = 1050001
+ExpLevel = 1400001
+ExpLevel = 1750001
+ExpLevel = 2100001
+ExpLevel = 2450001
+ExpLevel = 2800001
+ExpLevel = 3150001
+ExpLevel = 3500001
+ExpLevel = 3850001
+ExpLevel = 4200001
+ExpLevel = 4550001
+ExpLevel = 4900001
+ExpLevel = 5250001
+ExpLevel = 5600001
+ExpLevel = 5950001
+ExpLevel = 6300001
+ExpLevel = 6650001
+ExpLevel = 7000001
+ExpLevel = 7350001
+ExpLevel = 7700001
+ExpLevel = 8050001
+ExpLevel = 8400001
+ExpLevel = 8750001
+ExpLevel = 9100001
+ExpLevel = 9450001
+ExpLevel = 9800001
+ExpLevel = 10150001
+ExpLevel = 10500001
+ExpLevel = 10850001
+ExpLevel = 11200001
+\(END)
+
+\(BEGIN)
+name = MAGICUSER
+Key = 5
+Prime Requisite = Intelligence
+AbilityRequirement = Intelligence 9/19
+AbilityRequirement = Dexterity 3/19
+Allowed Race = HUMAN
+Allowed Race = ELF
+Allowed Race = HALF-ELF
+Allowed Race = GNOME
+Allowed Alignment = any
+ExpLevel = 0
+ExpLevel = 2501
+ExpLevel = 5001
+ExpLevel = 10001
+ExpLevel = 22501
+ExpLevel = 40001
+ExpLevel = 60001
+ExpLevel = 90001
+ExpLevel = 135001
+ExpLevel = 250001
+ExpLevel = 375001
+ExpLevel = 750001
+ExpLevel = 1125001
+ExpLevel = 1500001
+ExpLevel = 1875001
+ExpLevel = 2250001
+ExpLevel = 2625001
+ExpLevel = 3000001
+ExpLevel = 3375001
+ExpLevel = 3750001
+ExpLevel = 4125001
+ExpLevel = 4500001
+ExpLevel = 4875001
+ExpLevel = 5250001
+ExpLevel = 5625001
+ExpLevel = 6000001
+ExpLevel = 6375001
+ExpLevel = 6750001
+ExpLevel = 7125001
+ExpLevel = 7500001
+ExpLevel = 7875001
+ExpLevel = 8250001
+ExpLevel = 8625001
+ExpLevel = 9000001
+ExpLevel = 9375001
+ExpLevel = 9750001
+ExpLevel = 10125001
+ExpLevel = 10500001
+ExpLevel = 10875001
+ExpLevel = 11250001
+\(END)
+
+\(BEGIN)
+name = THIEF
+Key = 6
+Prime Requisite = Dexterity
+AbilityRequirement = Dexterity 9/19
+AbilityRequirement = Constitution 3/19
+AbilityRequirement = Intelligence 3/19
+Allowed Race = HUMAN
+Allowed Race = HALFLING
+Allowed Race = HALF-ELF
+Allowed Race = GNOME
+Allowed Race = ELF
+Allowed Race = DWARF
+Allowed Race = HALF-ORC
+Allowed Alignment = Neutral Good
+Allowed Alignment = Chaotic Good
+Allowed Alignment = Lawful Neutral
+Allowed Alignment = True Neutral
+Allowed Alignment = Chaotic Neutral
+Allowed Alignment = Lawful Evil
+Allowed Alignment = Neutral Evil
+Allowed Alignment = Chaotic Evil
+ExpLevel = 0
+ExpLevel = 1251
+ExpLevel = 2501
+ExpLevel = 5001
+ExpLevel = 10001
+ExpLevel = 20001
+ExpLevel = 42501
+ExpLevel = 70001
+ExpLevel = 110001
+ExpLevel = 160001
+ExpLevel = 220001
+ExpLevel = 440001
+ExpLevel = 660001
+ExpLevel = 880001
+ExpLevel = 1100001
+ExpLevel = 1320001
+ExpLevel = 1540001
+ExpLevel = 1760001
+ExpLevel = 1980001
+ExpLevel = 2200001
+ExpLevel = 2420001
+ExpLevel = 2640001
+ExpLevel = 2860001
+ExpLevel = 3080001
+ExpLevel = 3300001
+ExpLevel = 3520001
+ExpLevel = 3740001
+ExpLevel = 3960001
+ExpLevel = 4180001
+ExpLevel = 4400001
+ExpLevel = 4620001
+ExpLevel = 4840001
+ExpLevel = 5060001
+ExpLevel = 5280001
+ExpLevel = 5500001
+ExpLevel = 5720001
+ExpLevel = 5940001
+ExpLevel = 6160001
+ExpLevel = 6380001
+ExpLevel = 6600001
+\(END)
+
+\(BEGIN)
+name = DRUID
+Key = 7
+Prime Requisite = Wisdom
+AbilityRequirement = Wisdom 12/18
+AbilityRequirement = Charisma 15/18
+Allowed Race = HUMAN
+Allowed Race = HALF-ELF
+Allowed Alignment = True Neutral
+ExpLevel = 0
+ExpLevel = 2001
+ExpLevel = 4001
+ExpLevel = 7501
+ExpLevel = 12501
+ExpLevel = 20001
+ExpLevel = 35001
+ExpLevel = 60001
+ExpLevel = 90001
+ExpLevel = 125001
+ExpLevel = 200001
+ExpLevel = 300001
+ExpLevel = 750001
+ExpLevel = 1500001
+ExpLevel = 3000001
+ExpLevel = 3500001
+ExpLevel = 4000001
+ExpLevel = 4500001
+ExpLevel = 5000001
+ExpLevel = 5500001
+ExpLevel = 6000001
+ExpLevel = 6500001
+ExpLevel = 7000001
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+//ExpLevel = 
+\(END)
+
+\(BEGIN)
+name = $$Help
+Special Ability = Date,"February 28, 2012"
+Special Ability = Version,".9715"
+\(END)
+

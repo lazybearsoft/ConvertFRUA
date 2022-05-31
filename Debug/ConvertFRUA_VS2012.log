@@ -1,0 +1,69 @@
+﻿Build started 11/6/2015 5:46:29 PM.
+     1>Project "D:\projects\UAF\src\ConvertFRUA\ConvertFRUA_VS2012.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _WIN32_WINNT=0x0501 /D _USE_32BIT_TIME_T /D NO_WARN_MBCS_MFC_DEPRECATION /D MBCS /D _USING_V110_SDK71_ /D _MBCS /Gm- /EHsc /RTC1 /MT /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt NPC.cpp
+         NPC.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\projects\UAF\src\ConvertFRUA\Debug\ConvertFRUA.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"D:\projects\UAF\src\ConvertFRUA\Debug\ConvertFRUA.pdb" /SUBSYSTEM:CONSOLE,"5.01" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\projects\UAF\src\ConvertFRUA\Debug\ConvertFRUA.lib" /MACHINE:X86 Debug\ConvertFRUA.res
+         Debug\Capitalize.obj
+         Debug\Class.obj
+         Debug\ConvertFRUA.obj
+         Debug\Event_AddNPC.obj
+         Debug\Event_Camp.obj
+         Debug\Event_Chain.obj
+         Debug\Event_Combat.obj
+         Debug\Event_CombatTreasure.obj
+         Debug\Event_Encounter.obj
+         Debug\Event_GainExperience.obj
+         Debug\Event_GiveDamage.obj
+         Debug\Event_GiveTreasure.obj
+         Debug\Event_GuidedTour.obj
+         Debug\Event_HealParty.obj
+         Debug\Event_Journal.obj
+         Debug\Event_Monster.obj
+         Debug\Event_NPCSays.obj
+         Debug\Event_Null.obj
+         Debug\Event_PassTime.obj
+         Debug\Event_PAssword.obj
+         Debug\Event_Quest.obj
+         Debug\Event_QuestionButton.obj
+         Debug\Event_QuestionList.obj
+         Debug\Event_QuestionYesNo.obj
+         Debug\Event_Random.obj
+         Debug\Event_RemoveNPC.obj
+         Debug\Event_Rest.obj
+         Debug\Event_Shop.obj
+         Debug\Event_SmallTown.obj
+         Debug\Event_Sound.obj
+         Debug\Event_SpecialItems.obj
+         Debug\Event_TakePArtyItems.obj
+         Debug\Event_Tavern.obj
+         Debug\Event_TavernTales.obj
+         Debug\Event_Teleporter.obj
+         Debug\Event_Temple.obj
+         Debug\Event_TextStatement.obj
+         Debug\Event_Tour.obj
+         Debug\Event_TrainingHall.obj
+         Debug\Event_Utilities.obj
+         Debug\Event_Vault.obj
+         Debug\Event_WhoPays.obj
+         Debug\Event_WhoTries.obj
+         Debug\Globals.obj
+         Debug\Items.obj
+         Debug\J.obj
+         Debug\Levels.obj
+         Debug\MapGrid.obj
+         Debug\Miscellaneous.obj
+         Debug\Monsters.obj
+         Debug\NPC.obj
+         Debug\Spells.obj
+         Debug\StdAfx.obj
+         Debug\StepEvents.obj
+         Debug\TransferModule.obj
+     1>LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         ConvertFRUA_VS2012.vcxproj -> D:\projects\UAF\src\ConvertFRUA\Debug\ConvertFRUA.exe
+     1>Done Building Project "D:\projects\UAF\src\ConvertFRUA\ConvertFRUA_VS2012.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.09
